@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Insecurity Data Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+font-family:'Inter',sans-serif;
+background:#fdf6ec;
+padding:30px;
+color:#3f3f46;
+margin:0;
+}
+
+h1,h2{
+font-family:'Poppins',sans-serif;
+}
+
+nav{
+text-align:center;
+padding:15px;
+background:#fff7ed;
+margin-bottom:20px;
+}
+nav a{
+margin:10px;
+text-decoration:none;
+color:#6b4f4f;
+font-weight:600;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="data.html">Data</a>
+<a href="facts.html">Facts</a>
+<a href="map.html">Find Food</a>
+<a href="help.html">Help</a>
+<a href="donate.html">Donate</a>
+<a href="sources.html">Sources</a>
+</nav>
+
+<div class="container">
+
+<h1>Food Insecurity Data Dashboard</h1>
+<p>Michigan vs United States (2010–2026)</p>
+
+<div class="grid">
+
+<div class="card"><h2>Michigan vs U.S.</h2><canvas id="compareChart"></canvas></div>
+<div class="card"><h2>Children vs Adults</h2><canvas id="ageChart"></canvas></div>
+<div class="card"><h2>Trend Over Time</h2><canvas id="trendChart"></canvas></div>
+<div class="card"><h2>Income Levels</h2><canvas id="incomeChart"></canvas></div>
+<div class="card"><h2>Urban vs Rural</h2><canvas id="locationChart"></canvas></div>
+<div class="card"><h2>Education Impact</h2><canvas id="educationChart"></canvas></div>
+
+<div class="card"><h2>Causes</h2><canvas id="causeChart"></canvas></div>
+<div class="card"><h2>Programs</h2><canvas id="programChart"></canvas></div>
+<div class="card"><h2>Monthly Demand</h2><canvas id="monthlyChart"></canvas></div>
+
+<div class="card"><h2>Race & Ethnicity</h2><canvas id="raceChart"></canvas></div>
+<div class="card"><h2>Household Type</h2><canvas id="householdChart"></canvas></div>
+<div class="card"><h2>Detailed Age</h2><canvas id="ageDetailChart"></canvas></div>
+<div class="card"><h2>Employment</h2><canvas id="employmentChart"></canvas></div>
+
+</div>
+
+<div class="card">
+<h2>Demographic Insights</h2>
+<p>Food insecurity affects different populations differently:</p>
+<ul>
+<li>Children and single-parent households are most affected</li>
+<li>Low-income households face the highest risk</li>
+<li>Communities of color experience higher rates</li>
+<li>Unemployment increases food insecurity</li>
+</ul>
+</div>
+
+</div>
+
+<script>
+
+const green='#22c55e', brown='#6b4f4f', soft='#86efac', cream='#f5e6d3';
+
+// Michigan vs U.S.
+new Chart(compareChart,{
+type:'line',
+data:{
+labels:['2010','2015','2020','2024','2026'],
+datasets:[
+{label:'Michigan',data:[15,14,13,14.2,14],borderColor:green,fill:true,tension:.4},
+{label:'U.S.',data:[14.5,12.7,10.5,13.7,13.5],borderColor:brown,tension:.4}
+]
+},
+options:{
+scales:{
+x:{title:{display:true,text:'Year'}},
+y:{title:{display:true,text:'Food Insecurity (%)'}}
+}
+}
+});
+
+// Children vs Adults
+new Chart(ageChart,{
+type:'bar',
+data:{
+labels:['2015','2020','2024'],
+datasets:[
+{label:'Children',data:[350,380,402],backgroundColor:green},
+{label:'Adults',data:[900,1000,1100],backgroundColor:brown}
+]
+},
+options:{
+scales:{
+x:{title:{display:true,text:'Year'}},
+y:{title:{display:true,text:'People (Thousands)'}}
+}
+}
+});
+
+// Trend
+new Chart(trendChart,{
+type:'line',
+data:{
+labels:['2010','2012','2015','2018','2020','2024'],
+datasets:[
+{label:'Trend',data:[15,15.5,14,13.5,13,14.2],borderColor:green,tension:.4}
+]
+},
+options:{
+scales:{
+x:{title:{display:true,text:'Year'}},
+y:{title:{display:true,text:'Food Insecurity (%)'}}
+}
+}
+});
+
+// Income
+new Chart(incomeChart,{
+type:'bar',
+data:{labels:['Low','Middle','High'],
+datasets:[{data:[28,12,4],backgroundColor:[green,soft,brown]}]},
+options:{
+scales:{
+x:{title:{display:true,text:'Income Level'}},
+y:{title:{display:true,text:'% Affected'}}
+}
+}
+});
+
+// Urban vs Rural
+new Chart(locationChart,{
+type:'bar',
+data:{labels:['Urban','Rural'],
+datasets:[{data:[13,17],backgroundColor:[green,brown]}]},
+options:{
+scales:{
+x:{title:{display:true,text:'Location Type'}},
+y:{title:{display:true,text:'% Affected'}}
+}
+}
+});
+
+// Education
+new Chart(educationChart,{
+type:'bar',
+data:{labels:['No Diploma','High School','College'],
+datasets:[{data:[22,15,8],backgroundColor:[brown,green,soft]}]},
+options:{
+scales:{
+x:{title:{display:true,text:'Education Level'}},
+y:{title:{display:true,text:'% Affected'}}
+}
+}
+});
+
+// Causes (no axes)
+new Chart(causeChart,{
+type:'doughnut',
+data:{labels:['Poverty','Unemployment','Cost','Other'],
+datasets:[{data:[40,20,25,15],backgroundColor:[green,brown,soft,cream]}]}
+});
+
+// Programs
+new Chart(programChart,{
+type:'bar',
+data:{labels:['SNAP','WIC','Food Banks'],
+datasets:[{data:[42,6,50],backgroundColor:[green,brown,soft]}]},
+options:{
+scales:{
+y:{title:{display:true,text:'Millions of People'}}
+}
+}
+});
+
+// Monthly
+new Chart(monthlyChart,{
+type:'line',
+data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+datasets:[{data:[70,65,75,80,85,90,95,92,88,85,78,72],borderColor:green,tension:.4,fill:true}]},
+options:{
+scales:{
+y:{title:{display:true,text:'Demand Level'}}
+}
+}
+});
+
+// Race
+new Chart(raceChart,{
+type:'bar',
+data:{labels:['Black','Hispanic','White','Other'],
+datasets:[{data:[21,18,10,12],backgroundColor:[green,brown,soft,cream]}]},
+options:{
+scales:{
+y:{title:{display:true,text:'% Affected'}}
+}
+}
+});
+
+// Household
+new Chart(householdChart,{
+type:'bar',
+data:{labels:['Single Parent','Two Parent','Single Adult'],
+datasets:[{data:[25,12,15],backgroundColor:[brown,green,soft]}]},
+options:{
+scales:{
+y:{title:{display:true,text:'% Affected'}}
+}
+}
+});
+
+// Age Detail
+new Chart(ageDetailChart,{
+type:'line',
+data:{labels:['0-5','6-12','13-18','19-64','65+'],
+datasets:[{data:[20,18,16,14,9],borderColor:green,tension:.4,fill:true}]},
+options:{
+scales:{
+y:{title:{display:true,text:'%'}}
+}
+}
+});
+
+// Employment
+new Chart(employmentChart,{
+type:'doughnut',
+data:{labels:['Unemployed','Part-Time','Full-Time'],
+datasets:[{data:[40,35,25],backgroundColor:[brown,green,soft]}]}
+});
+
+</script>
+
+</body>
+</html>
