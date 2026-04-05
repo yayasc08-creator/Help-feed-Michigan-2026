@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | SAMW Project</title>
+    <style>
+        :root {
+            --primary: #22c55e;
+            --zelle: #6d1ed1;
+            --gofundme: #00a082;
+            --bg: #fdf6ec;
+            --text: #1f2937;
+        }
+
+        body {
+            text-align: center;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            max-width: 420px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .intro-section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .intro-section h1 {
+            color: var(--text);
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .intro-section p {
+            font-size: 1rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .personal-message {
+            background: #f0fff4;
+            border-left: 4px solid var(--gofundme);
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #065f46;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.4;
+        }
+
+        .qr-area {
+            border: 3px solid var(--zelle);
+            border-radius: 20px;
+            margin: 15px 0;
+            padding: 10px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        .qr-area img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .copy-box {
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: block;
+            color: white;
+            padding: 16px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+        }
+
+        .btn:active { transform: scale(0.98); }
+
+        .zelle-copy-btn {
+            background: var(--zelle);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            width: 100%;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .gofundme-btn { background: var(--gofundme); }
+        .paypal-btn { background: var(--primary); }
+
+        .label {
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="intro-section">
+            <h1>Support Our Mission</h1>
+            <p>Your donations help provide food, support families, and fight hunger across Michigan.</p>
+        </div>
+
+        <span class="label" style="color: var(--gofundme);">Option 1: GoFundMe</span>
+        
+        <div class="personal-message">
+            Hey, I started this fundraiser on GoFundMe. It would mean a lot to me if you could donate or share with others. Any kind of help makes a difference and gets me closer to my goal. Thanks so much.
+        </div>
+
+        <a href="https://gofund.me/013198617" target="_blank" class="btn gofundme-btn">
+            Donate or Share on GoFundMe
+        </a>
+
+        <span class="label" style="color: var(--zelle); margin-top: 15px;">Option 2: Direct via Zelle</span>
+        <div class="qr-area">
+            <img src="1000007659.jpg" 
+                 onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=y***8@gmail.com'" 
+                 alt="Zelle QR Code">
+        </div>
+
+        <div class="copy-box">
+            <div style="font-size: 0.7rem; color: var(--zelle); font-weight: bold;">ZELLE RECIPIENT</div>
+            <div id="email" style="font-weight: 800; font-size: 1.1rem; margin-top: 4px;">y***8@gmail.com</div>
+            <button class="zelle-copy-btn" onclick="copyEmail()">Copy Email for Zelle</button>
+        </div>
+
+        <span class="label" style="color: var(--primary);">Option 3: PayPal</span>
+        <a href="https://www.paypal.com/donate" target="_blank" class="btn paypal-btn">Donate Now</a>
+
+        <div class="footer-note">
+            Every donation makes a difference.<br>
+            Securely processed via GoFundMe, Zelle, or PayPal.
+        </div>
+    </div>
+
+    <script>
+        function copyEmail() {
+            const emailText = "y***8@gmail.com";
+            navigator.clipboard.writeText(emailText).then(() => {
+                alert("Zelle Email Copied! Paste this into your bank's app.");
+            });
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | SAMW Project</title>
+    <style>
+        :root {
+            --primary: #22c55e;
+            --zelle: #6d1ed1;
+            --gofundme: #00a082;
+            --bg: #fdf6ec;
+            --text: #1f2937;
+        }
+
+        body {
+            text-align: center;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            max-width: 420px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .intro-section {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .intro-section h1 {
+            color: var(--text);
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .intro-section p {
+            font-size: 1rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .personal-message {
+            background: #f0fff4;
+            border-left: 4px solid var(--gofundme);
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #065f46;
+            border-radius: 0 12px 12px 0;
+            line-height: 1.4;
+        }
+
+        .qr-area {
+            border: 3px solid var(--zelle);
+            border-radius: 20px;
+            margin: 15px 0;
+            padding: 10px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        .qr-area img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .copy-box {
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: block;
+            color: white;
+            padding: 16px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+        }
+
+        .btn:active { transform: scale(0.98); }
+
+        .zelle-copy-btn {
+            background: var(--zelle);
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            color: white;
+            width: 100%;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .gofundme-btn { background: var(--gofundme); }
+        .paypal-btn { background: var(--primary); }
+
+        .label {
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="intro-section">
+            <h1>Support Our Mission</h1>
+            <p>Your donations help provide food, support families, and fight hunger across Michigan.</p>
+        </div>
+
+        <span class="label" style="color: var(--gofundme);">Option 1: GoFundMe</span>
+        
+        <div class="personal-message">
+            Hey, I started this fundraiser on GoFundMe. It would mean a lot to me if you could donate or share with others. Any kind of help makes a difference and gets me closer to my goal. Thanks so much.
+        </div>
+
+        <a href="https://gofund.me/013198617" target="_blank" class="btn gofundme-btn">
+            Donate or Share on GoFundMe
+        </a>
+
+        <span class="label" style="color: var(--zelle); margin-top: 15px;">Option 2: Direct via Zelle</span>
+        <div class="qr-area">
+            <img src="1000007659.jpg" 
+                 onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=y***8@gmail.com'" 
+                 alt="Zelle QR Code">
+        </div>
+
+        <div class="copy-box">
+            <div style="font-size: 0.7rem; color: var(--zelle); font-weight: bold;">ZELLE RECIPIENT</div>
+            <div id="email" style="font-weight: 800; font-size: 1.1rem; margin-top: 4px;">y***8@gmail.com</div>
+            <button class="zelle-copy-btn" onclick="copyEmail()">Copy Email for Zelle</button>
+        </div>
+
+        <span class="label" style="color: var(--primary);">Option 3: PayPal</span>
+        <a href="https://www.paypal.com/donate" target="_blank" class="btn paypal-btn">Donate Now</a>
+
+        <div class="footer-note">
+            Every donation makes a difference.<br>
+            Securely processed via GoFundMe, Zelle, or PayPal.
+        </div>
+    </div>
+
+    <script>
+        function copyEmail() {
+            const emailText = "y***8@gmail.com";
+            navigator.clipboard.writeText(emailText).then(() => {
+                alert("Zelle Email Copied! Paste this into your bank's app.");
+            });
+        }
+    </script>
+
+</body>
+</html>
